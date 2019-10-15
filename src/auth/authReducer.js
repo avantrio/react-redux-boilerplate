@@ -11,7 +11,7 @@ const initialState = {
     isLogged: false,
 }
 
-const incidentReducer = createReducer(initialState, {
+const authReducer = createReducer(initialState, {
 
     [login] : (state, action) => {
         state.isLogged = true;
@@ -22,4 +22,4 @@ const incidentReducer = createReducer(initialState, {
 
 })
 
-export default incidentReducer;
+export default authReducer;
