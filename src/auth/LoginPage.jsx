@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {Redirect} from 'react-router-dom'
+
 
 import { login, logout } from '../auth/authActions';
 
@@ -10,12 +12,18 @@ function LoginPage() {
     const dispatch = useDispatch()
     const isLoggedIn = useSelector((state) => (state.auth.isLogged))
 
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleSignIn = () => {
+        dispatch(login(userName,password))
+    }
+
+    if(isLoggedIn){
+        return <Redirect to="home"/>
+    }
+
     return (
-        // <div className="root">
-        //     <button onClick={()=>{isLoggedIn?dispatch(logout({confirm:"logged out"})):dispatch(login())}}>
-        //     {isLoggedIn?"Logout":"Login"}
-        //     </button>
-        // </div>
         <section class="hero is-fullheight">
             <div class="hero-body">
                 <div class="container has-text-centered">
@@ -30,13 +38,26 @@ function LoginPage() {
                             <form>
                                 <div class="field">
                                     <div class="control">
-                                        <input class="input is-large" type="email" placeholder="Your Email" autofocus="" />
+                                        <input 
+                                            class="input is-large" 
+                                            type="email" 
+                                            placeholder="Your Email"  
+                                            autofocus="" 
+                                            value={userName}
+                                            onChange={(e)=>{setUserName(e.target.value)}}
+                                        />
                                     </div>
                                 </div>
 
                                 <div class="field">
                                     <div class="control">
-                                        <input class="input is-large" type="password" placeholder="Your Password" />
+                                        <input 
+                                            class="input is-large" 
+                                            type="password" 
+                                            placeholder="Your Password"
+                                            value={password}
+                                            onChange={(e)=>{setPassword(e.target.value)}}
+                                        />
                                     </div>
                                 </div>
                                 <div class="field">
@@ -45,7 +66,13 @@ function LoginPage() {
                                         Remember me
                                     </label>
                                 </div>
-                                <button class="button is-block is-info is-large is-fullwidth">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                                <button 
+                                    class="button is-block is-info is-large is-fullwidth"
+                                    onClick={handleSignIn}
+                                >
+                                    Login 
+                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                </button>
                             </form>
                         </div>
                         <p class="has-text-grey">

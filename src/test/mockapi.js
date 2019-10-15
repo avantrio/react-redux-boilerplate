@@ -1,4 +1,4 @@
-import users from './users';
+import {users} from './users';
 
 export async function signIn(userName, password) {
     const userIndex = users.findIndex(user => user.userName === userName);
@@ -12,6 +12,7 @@ export async function signIn(userName, password) {
 
     return {
         user: users[userIndex],
-        authenticated: true
+        authenticated: true,
+        token:"kek"
     };
 }
