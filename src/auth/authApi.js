@@ -1,4 +1,4 @@
-import handler from '../apiHandler';
+// import handler from '../apiHandler';
 import * as mockApi from '../test/mockapi';
 
 export const login = async (userName, password) => {

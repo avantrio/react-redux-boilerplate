@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {Redirect} from 'react-router-dom'
 
 
-import { login, logout } from '../auth/authActions';
+import { login } from '../auth/authActions';
 
 
 
@@ -20,7 +20,7 @@ function LoginPage() {
     }
 
     if(isLoggedIn){
-        return <Redirect to="home"/>
+        return <Redirect to="/app/home"/>
     }
 
     return (

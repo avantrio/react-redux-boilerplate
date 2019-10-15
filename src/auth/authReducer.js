@@ -4,7 +4,7 @@ import { createReducer } from 'redux-starter-kit';
 import {
     loginRequest,
     loginSuccess,
-    loginError,
+    // loginError,
 
     logout
 } from './authActions'
