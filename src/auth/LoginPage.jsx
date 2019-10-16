@@ -1,15 +1,25 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
 
-
-import { login } from '../auth/authActions';
-
-
+import { login, restoreUserSession } from '../auth/authActions';
+import { read as readLocalStorage} from '../utils/localStorage';
+import {APP_NAME} from '../config';
 
 function LoginPage() {
 
     const dispatch = useDispatch()
+
+    useEffect(()=>{
+        const checkForAuthToken = async () => {
+            const authToken = await readLocalStorage(APP_NAME);
+            if(authToken){
+                dispatch(restoreUserSession(authToken));
+            }
+        }
+        checkForAuthToken()
+    },[])
+
     const isLoggedIn = useSelector((state) => (state.auth.isLogged))
 
     const [userName, setUserName] = useState("");

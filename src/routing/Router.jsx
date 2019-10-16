@@ -8,6 +8,7 @@ import {
 import history from './history';
 import PrivateRoute from './PrivateRoute';
 
+
 //page level components.
 import LoginPage from '../auth/LoginPage';
 import MasterLayout from '../layout/MasterLayout'
@@ -28,8 +29,4 @@ export default function RouterComponent() {
             </div>
         </Router>
     );
-}
-
-function Home() {
-    return <h2>Home</h2>;
 }
