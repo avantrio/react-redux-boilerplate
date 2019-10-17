@@ -5,10 +5,12 @@ import {Redirect} from 'react-router-dom';
 import { login, restoreUserSession } from '../auth/authActions';
 import { read as readLocalStorage} from '../utils/localStorage';
 import {APP_NAME} from '../config';
+import { useHistory } from "react-router-dom";
 
 function LoginPage() {
 
     const dispatch = useDispatch()
+    const history = useHistory() //router history.
 
     useEffect(()=>{
         const checkForAuthToken = async () => {
@@ -30,7 +32,8 @@ function LoginPage() {
     }
 
     if(isLoggedIn){
-        return <Redirect to="/app/home"/>
+        let { from } = history.location.state || { from: { pathname: "/app/home" } };
+        return <Redirect to={from}/>
     }
 
     return (

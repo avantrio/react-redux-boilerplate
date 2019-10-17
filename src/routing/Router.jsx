@@ -23,8 +23,8 @@ export default function RouterComponent() {
                     <Route path="/login" component={LoginPage} />
                     <PrivateRoute path='/app' component={MasterLayout}>
                         <Switch>
-                            <Route exact path='/app/home' component={(props)=>(<div>"Home"</div>)} />
-                            <Route exact path='/app/dashboard' component={DashboardPage} />
+                            <PrivateRoute exact path='/app/home' component={(props)=>(<div>"Home"</div>)} />
+                            <PrivateRoute exact path='/app/dashboard' component={DashboardPage} />
                         </Switch>
                     </PrivateRoute>
                 </Switch>
