@@ -11,7 +11,8 @@ import PrivateRoute from './PrivateRoute';
 
 //page level components.
 import LoginPage from '../auth/LoginPage';
-import MasterLayout from '../layout/MasterLayout'
+import MasterLayout from '../layout/MasterLayout';
+import DashboardPage from '../dashboard/DashboardPage';
 
 export default function RouterComponent() {
     return (
@@ -22,7 +23,8 @@ export default function RouterComponent() {
                     <Route path="/login" component={LoginPage} />
                     <PrivateRoute path='/app' component={MasterLayout}>
                         <Switch>
-                            <Route path='/app/home' component={(props)=>(<div>"Home"</div>)} />
+                            <Route exact path='/app/home' component={(props)=>(<div>"Home"</div>)} />
+                            <Route exact path='/app/dashboard' component={DashboardPage} />
                         </Switch>
                     </PrivateRoute>
                 </Switch>

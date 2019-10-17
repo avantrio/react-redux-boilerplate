@@ -5,7 +5,6 @@ import {
     loginRequest,
     loginSuccess,
     // loginError,
-
     logout
 } from './authActions'
 

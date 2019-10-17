@@ -18,13 +18,15 @@ const write = (key, value) => {
  * @param {String} key Local storage stored key
  */
 const read = (key) => {
-    const item = localStorage.getItem(key);
-
-    if (item == null) {
+    try{
+        const item = localStorage.getItem(key);
+        if (item == null ) {
+            return null;
+        }
+        return JSON.parse(item);
+    }catch(e){
         return null;
     }
-
-    return JSON.parse(item);
 };
 
 /**
@@ -33,8 +35,12 @@ const read = (key) => {
  * @param {String} key Local storage stored key
  */
 const remove = (key) => {
-    localStorage.removeItem(key);
-    return true;
+    try{
+        localStorage.removeItem(key);
+        return true;
+    }catch(e){
+        return false;
+    }
 };
 
 /**

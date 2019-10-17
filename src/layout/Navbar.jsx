@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch} from 'react-redux'
 
 import { logout } from '../auth/authActions';
-
+import { Link } from 'react-router-dom';
 
 function NavBar(props) {
     const dispatch = useDispatch()
@@ -27,13 +27,13 @@ function NavBar(props) {
 
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item">
+                    <Link to='/app/home' class="navbar-item">
                         Home
-                    </a>
+                    </Link>
 
-                    <a class="navbar-item">
-                        Documentation
-                    </a>
+                    <Link to='/app/dashboard' class="navbar-item">
+                        Dashboard
+                    </Link>
 
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
@@ -62,7 +62,7 @@ function NavBar(props) {
                     <div class="navbar-item">
                         <div class="buttons">
                             <a class="button is-primary">
-                                <strong>Sign up</strong>
+                                <strong>Profile</strong>
                             </a>
                             <a class="button is-light" onClick={onLogoutClick}>
                                 Log Out

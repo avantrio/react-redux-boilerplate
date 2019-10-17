@@ -14,6 +14,7 @@ const breadcrumbNameMap = {
 export default function (props) {
 
     const currPath = history.location.pathname;
+    
     const pathnames = currPath.split('/').filter(x => x).slice(1);
 
     return (
