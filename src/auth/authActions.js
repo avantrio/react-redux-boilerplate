@@ -13,7 +13,7 @@ export const login = (userName, password) => {
         try{
             dispatch(loginRequest());
             const result = await authApi.login(userName, password);
-            dispatch(loginSuccess({data:result}))
+            dispatch(loginSuccess({data:result, confirm:"login success!"}))
         }catch(e){
             dispatch(loginError({error:e}))
         } 

@@ -2,7 +2,8 @@ import React from 'react';
 
 import NavBar from './Navbar';
 import Breadcrumbs from './Breadcrumbs';
-import SideBar from './SideBar';                        
+import SideBar from './SideBar';
+import Notification from '../notification/Notification';                  
 
 const MasterLayout = (props) => {
     return (
@@ -20,6 +21,10 @@ const MasterLayout = (props) => {
                 {props.children}
             </div>
         </div>
+        </div>
+
+        <div style={{position: 'absolute',bottom: 50,right: 50, minWidth:300}}>
+            <Notification/>
         </div>
         </>
     )
