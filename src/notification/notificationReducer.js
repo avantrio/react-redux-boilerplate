@@ -8,7 +8,7 @@ import {
 
 const initialState = {
     isOpen: false,
-    errors: null,
+    error: null,
     confirm: null,
     isLoading: false
 }
@@ -26,14 +26,14 @@ function notificationReducer(state = initialState, action) {
             return draft;
         }else if(type === hideNotification().type){
             draft.isOpen = false;
-            draft.errors = null;
+            draft.error = null;
             draft.confirm = null;
             draft.isLoading = false;
             draft.body = null;
             return draft;
         }else if(error){
             draft.isOpen = true;
-            draft.errors = error;
+            draft.error = error;
             draft.isLoading = false;
             return draft;
         }else if(confirm){
@@ -42,7 +42,7 @@ function notificationReducer(state = initialState, action) {
             draft.isLoading = false;
             return draft;
         }else if(isLoading !== undefined && isLoading !== null){
-            if(!draft.errors && !draft.confirm){
+            if(!draft.error && !draft.confirm){
                 if(isLoading === true){
                     draft.isLoading = true;
                     draft.isOpen = true;
